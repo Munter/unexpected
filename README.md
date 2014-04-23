@@ -251,6 +251,8 @@ expect(fn, 'to throw exception', function (e) { // get the exception object
 expect(fn, 'to throw exception', /matches the exception message/);
 expect(fn, 'to throw error', 'matches the exact exception message');
 expect(fn2, 'not to throw error');
+expect(fn, 'to throw a, SyntaxError);
+expect(fn, 'to throw an, Error);
 ```
 
 **finite/infinite**: asserts a finite or infinite number

@@ -431,6 +431,36 @@ describe('unexpected', function () {
         });
     });
 
+    describe('to throw a/an assertion', function () {
+        it('succeeds when the subject throws an error that is of the given type', function () {
+            expect(function () {
+                throw new SyntaxError();
+            }, 'to throw a', SyntaxError);
+
+            expect(function () {
+                throw new Error();
+            }, 'to throw an', Error);
+        });
+
+        it('fails when subject does not throw', function () {
+            expect(function () {
+                expect(function () {}, 'to throw a', SyntaxError);
+            }, 'to throw', 'expected [Function] to throw a [Function: SyntaxError]');
+        });
+
+        it('fails when subject throws an error of a different type', function () {
+            function MyError() {}
+            function MyOtherError() {}
+
+            expect(function () {
+                expect(function () {
+                    throw new MyOtherError();
+                }, 'to throw a', MyError);
+            }, 'to throw', 'expected [Function] to throw a [Function: MyError]\n' +
+                   '    expected [MyOtherError] to be a [Function: MyError]');
+        });
+    });
+
     describe('match assertion', function () {
         it('tests that the subject matches the given regular expression', function () {
             expect('test', 'to match', /.*st/);
