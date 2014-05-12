@@ -1071,7 +1071,7 @@ describe('unexpected', function () {
                 "  baz: [ 7, 8, '9' ] }:\n" +
                 "    bar: failed expectation in [ 4, '5', 6 ]:\n" +
                 "        1: expected '5' to be a number\n" +
-                "    baz: failed expectation in [ 7, 8, '9' ]:\n" +
+                "    baz: failed expetation in [ 7, 8, '9' ]:\n" +
                 "        2: expected '9' to be a number");
         });
     });
