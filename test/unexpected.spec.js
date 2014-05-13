@@ -221,14 +221,14 @@ describe('unexpected', function () {
             expect(new Uint8Array([0x45, 0x59]), 'to equal', new Uint8Array([0x45, 0x59]));
         });
 
-        it('fails gracefully when comparing circular structures', function () {
+        it('fails when comparing circular structures', function () {
             var foo = {},
                 bar = {};
             foo.foo = foo;
             bar.foo = bar;
             expect(function () {
                 expect(foo, 'not to equal', bar);
-            }, 'to throw', 'Cannot compare circular structures');
+            }, 'to throw', /stack/);
         });
 
         it('throws when the assertion fails', function () {
