@@ -465,6 +465,7 @@ describe('unexpected', function () {
 
         it('foobar', function () {
             expect({
+                foo : ['foo', 'bar', 'baz'],
                 yy : 6,
                 zz : 5,
                 a : [1, 2, 3],
@@ -474,8 +475,28 @@ describe('unexpected', function () {
                 a : [ 1, 2, "z", /beep/],
                 fn : function qqq() {},
                 b : [5, 6, 7],
-                c : { x : 8, y : 5 }
+                c : { x : 8, y : 5 },
+                foo : ['foo', 'bar', 'baz']
             });
+        });
+
+        it('qux', function () {
+            expect(function () {
+                expect({
+                    foo : ['foo', 'bar', 'baz'],
+                    yy : 6,
+                    zz : 5,
+                    a : [1, 2, 3],
+                    fn : 'beep',
+                    c : { x : 7, z : 3 }
+                }, 'to equal', {
+                    a : [ 1, 2, "z", /beep/],
+                    fn : function qqq() {},
+                    b : [5, 6, 7],
+                    c : { x : 8, y : 5 },
+                    foo : ['foo', 'bar', 'baz']
+                });
+            }, 'to throw', '');
         });
 
         it('exactly matches the message against the given string', function () {
