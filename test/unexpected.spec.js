@@ -463,6 +463,21 @@ describe('unexpected', function () {
             });
         });
 
+        it('foobar', function () {
+            expect({
+                yy : 6,
+                zz : 5,
+                a : [1, 2, 3],
+                fn : 'beep',
+                c : { x : 7, z : 3 }
+            }, 'to equal', {
+                a : [ 1, 2, "z", /beep/],
+                fn : function qqq() {},
+                b : [5, 6, 7],
+                c : { x : 8, y : 5 }
+            });
+        });
+
         it('exactly matches the message against the given string', function () {
             expect(function () {
                 throw new Error('matches the exception message');
