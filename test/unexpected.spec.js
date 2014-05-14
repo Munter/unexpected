@@ -466,6 +466,7 @@ describe('unexpected', function () {
         it('foobar', function () {
             expect({
                 foo : ['foo', 'bar', 'baz'],
+                text: 'Hello world',
                 yy : 6,
                 zz : 5,
                 a : [1, 2, 3],
@@ -476,7 +477,8 @@ describe('unexpected', function () {
                 fn : function qqq() {},
                 b : [5, 6, 7],
                 c : { x : 8, y : 5 },
-                foo : ['foo', 'bar', 'baz']
+                foo : ['foo', 'bar', 'baz'],
+                text: 'Hello, world'
             });
         });
 
