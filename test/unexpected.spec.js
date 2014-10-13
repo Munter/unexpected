@@ -496,37 +496,32 @@ describe('unexpected', function () {
         });
 
         it.skipIf(typeof Buffer === 'undefined', 'produces a hex-diff in JSON when Buffers differ', function () {
-            expect(function () {
+            // expect(function () {
                 expect(
                     new Buffer('\x00\x01\x02Here is the thing I was talking about', 'utf-8'),
                     'to equal',
                     new Buffer('\x00\x01\x02Here is the thing I was quuxing about', 'utf-8')
                 );
-            }, 'to throw',
-                   'expected Buffer([0x00, 0x01, 0x02, 0x48, 0x65, 0x72, 0x65, 0x20, 0x69, 0x73, 0x20, 0x74, 0x68, 0x65, 0x20, 0x74 /* 24 more */ ])\n' +
-                   'to equal Buffer([0x00, 0x01, 0x02, 0x48, 0x65, 0x72, 0x65, 0x20, 0x69, 0x73, 0x20, 0x74, 0x68, 0x65, 0x20, 0x74 /* 24 more */ ])\n' +
-                   '\n' +
-                   'Diff:\n' +
-                   '\n' +
-                   ' 00 01 02 48 65 72 65 20 69 73 20 74 68 65 20 74  │...Here is the t│\n' +
-                   '-68 69 6E 67 20 49 20 77 61 73 20 74 61 6C 6B 69  │hing I was talki│\n' +
-                   '+68 69 6E 67 20 49 20 77 61 73 20 71 75 75 78 69  │hing I was quuxi│\n' +
-                   ' 6E 67 20 61 62 6F 75 74                          │ng about│');
+            // }, 'to throw',
+            //        'expected Buffer([0x00, 0x01, 0x02, 0x48, 0x65, 0x72, 0x65, 0x20, 0x69, 0x73, 0x20, 0x74, 0x68, 0x65, 0x20, 0x74 /* 24 more */ ])\n' +
+            //        'to equal Buffer([0x00, 0x01, 0x02, 0x48, 0x65, 0x72, 0x65, 0x20, 0x69, 0x73, 0x20, 0x74, 0x68, 0x65, 0x20, 0x74 /* 24 more */ ])\n' +
+            //        '\n' +
+            //        'Diff:\n' +
+            //        '\n' +
+            //        ' 00 01 02 48 65 72 65 20 69 73 20 74 68 65 20 74  │...Here is the t│\n' +
+            //        '-68 69 6E 67 20 49 20 77 61 73 20 74 61 6C 6B 69  │hing I was talki│\n' +
+            //        '+68 69 6E 67 20 49 20 77 61 73 20 71 75 75 78 69  │hing I was quuxi│\n' +
+            //        ' 6E 67 20 61 62 6F 75 74                          │ng about│');
         });
 
-
-        it.skipIf(typeof Buffer === 'undefined', 'regression test for infinite loop in buffer diff code', function () {
-            expect(function () {
+        it.skipIf(typeof Buffer === 'undefined', 'another regression test for infinite loop in buffer diff code', function () {
+//            expect(function () {
                 expect(
-                    new Buffer([0x63, 0x74, 0x3D, 0x54, 0x3B, 0xD4, 0x8C, 0x3B, 0x66, 0x6F, 0x6F, 0x3D, 0x62, 0x61, 0x72, 0x3B]),
+                    new Buffer([0xD4, 0x8C]),
                     'to equal',
-                    Buffer.concat([
-                        new Buffer('ct=T;;'),
-                        new Buffer([0xa3, 0x3b]),
-                        new Buffer(';foo=bar;')
-                    ])
+                    new Buffer([0x00])
                 );
-            }, 'to throw');
+//            }, 'to throw');
         });
 
         it.skipIf(typeof Int8Array === 'undefined' || !Array.prototype.map, 'produces a hex-diff in JSON when Int8Arrays differ', function () {
